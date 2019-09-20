@@ -39,6 +39,7 @@ print albums
 album = albums.getfirst()
 
 # Summary will show all available attributes
+print album
 
 # Access any attribute inside the album by album.X
 print album.albumcover              # review what's insde
