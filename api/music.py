@@ -44,26 +44,3 @@ class Music(FanartBase):
         return albums
 
 
-if __name__ == '__main__':
-    API_KEY = 'Your personal API key for FanArt'
-    m = Music()
-    m.set_api_key(API_KEY)
-
-    # Test: /music ( get artist with full query )
-    if False:
-        artist = m.artist('ea4dfa26-f633-4da6-a52a-f49ea4897b58')
-        print "Artist object:", artist
-
-    # Test: /music/albums
-    if True:
-        # W/o cdart
-        albums = m.album('10c057fa-27a7-4122-a755-493c4c817603')
-        print "Albums:", albums
-
-        album = albums.getfirst()
-        print "Album:", album
-        if album:
-            print "-> Cover:",  album.albumcover.getfirst()
-            print "-> CD Art:", album.cdart.getfirst()
-
-

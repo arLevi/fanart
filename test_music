@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+
+"""
+FanArt test for the Music category: Using the Music API
+"""
+
+from api.music import Music
+
+
+def test_artist(mbid_id):
+    artist = m.artist(mbid_id)
+    print "Artist object:", artist
+
+def test_album(mbid_id):
+    albums = m.album(mbid_id)
+    print "Albums:", albums
+
+    album = albums.getfirst()
+    print "Album:", album
+    if album:
+        print "-> Cover:",  album.albumcover.getfirst()
+        print "-> CD Art:", album.cdart.getfirst()
+
+
+if __name__ == '__main__':
+    m = Music()
+    m.set_api_key('Your personal API key for FanArt')
+
+    # Testing artist
+    test_artist('ea4dfa26-f633-4da6-a52a-f49ea4897b58')
+
+    # Album w/o CDArt
+    test_album('10c057fa-27a7-4122-a755-493c4c817603')
+
+    # Album with CDArt
+    test_album('400a5fdd-e616-3598-a9bf-cd8275cb53d0')
