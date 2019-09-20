@@ -45,8 +45,9 @@ class Music(FanartBase):
 
 
 if __name__ == '__main__':
+    API_KEY = 'Your personal API key for FanArt'
     m = Music()
-    m.set_api_key('6b751c311d23f426e4524c78249cd62c')
+    m.set_api_key(API_KEY)
 
     # Test: /music ( get artist with full query )
     if False:
