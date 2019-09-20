@@ -32,7 +32,6 @@ class FanartHTTP(object):
                 endpoint=endpoint,
                 key=self.api_key)
 
-        print "URL:", url
         return requests.request(method, url, data=params)
 
     def get(self, url):

@@ -1,5 +1,5 @@
 
-class ArtistBase(object):
+class ArtistAttribute(object):
     def __init__(self, dict_key):
         """
         dict_key | (string) from the API response to load the data to
@@ -11,17 +11,19 @@ class ArtistBase(object):
         """ Load data from a certain key """
         self.all = response.get(self.key, self.all)
 
+    def __repr__(self):
+        return """<Attribute key(%s) all(%s)""" % (self.key, len(self.all))
 
 
 class Artist(object):
     def __init__(self):
         self.name = ''
         self.mbid_id = ''
-        self.hdmusiclogo = ArtistBase('hdmusiclogo')
-        self.artistbackground = ArtistBase('artistbackground')
-        self.artistthumb = ArtistBase('artistthumb')
-        self.musicbanner = ArtistBase('musicbanner')
-        self.musiclogo   = ArtistBase('musiclogo')
+        self.hdmusiclogo = ArtistAttribute('hdmusiclogo')
+        self.artistthumb = ArtistAttribute('artistthumb')
+        self.musicbanner = ArtistAttribute('musicbanner')
+        self.musiclogo   = ArtistAttribute('musiclogo')
+        self.artistbackground = ArtistAttribute('artistbackground')
 
     def load(self, response):
         """ Receiving HTTP response, load whatevern we need here """
