@@ -53,7 +53,7 @@ class Albums(object):
         self.name    = response.get('name', '')
 
         # Load Albums
-        self.sorted_ids = response.get('albums', []).keys()
+        self.sorted_ids = response.get('albums', {}).keys()
         _albums = response.get('albums', {})
         for mbid_id in _albums.keys():
             collected_album = Album(mbid_id)
@@ -63,6 +63,9 @@ class Albums(object):
 
     def getfirst(self):
         """ Return the albums with the most likes """
+        if not self.sorted_ids:
+            return
+
         first_id = self.sorted_ids[0]
         return self.all.get(first_id)
 
