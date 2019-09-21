@@ -1,3 +1,5 @@
+from albums import Albums
+
 
 class ArtistAttribute(object):
     def __init__(self, dict_key):
@@ -24,6 +26,7 @@ class Artist(object):
         self.musicbanner = ArtistAttribute('musicbanner')
         self.musiclogo   = ArtistAttribute('musiclogo')
         self.artistbackground = ArtistAttribute('artistbackground')
+        self.albums = Albums()
 
     def load(self, response):
         """ Receiving HTTP response, load whatevern we need here """
@@ -35,6 +38,11 @@ class Artist(object):
         self.musicbanner.load(response)
         self.musiclogo.load(response)
         self.artistbackground.load(response)
+        self.albums.load(response)
+
+    def get_albums(self):
+        """ Return all available albums """
+        return self.albums
 
     def __repr__(self):
         return """<Artist %s, 

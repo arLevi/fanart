@@ -25,6 +25,10 @@ print artist
 backgrounds = artist.artistbackground
 print backgrounds.all           # review what's inside
 print backgrounds.getfirst()    # Most likes
+
+# Access Artist's albums
+albums = artist.get_albums()    # All
+album = artist.albums.get_album('10c057fa-27a7-4122-a755-493c4c817603')     # Specific by MB ID ..
 ```
 
 ### music/albums

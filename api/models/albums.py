@@ -34,7 +34,7 @@ class Album(object):
     def __repr__(self):
         return """<Album %s
         albumcover(%s)
-        cdart(%s)""" % (self.mbid_id, 
+        cdart(%s)\n""" % (self.mbid_id, 
                         len(self.albumcover.all), 
                         len(self.cdart.all))
 
@@ -68,6 +68,14 @@ class Albums(object):
 
         first_id = self.sorted_ids[0]
         return self.all.get(first_id)
+
+    def get_albums(self):
+        """ Return all available albums """
+        return self.all
+
+    def get_album(self, mbid_id):
+        """ Get album by its MB ID """
+        return self.all.get(mbid_id)
 
     def __repr__(self):
         return """<Albums mbid_id(%s) all(%s)""" % (self.mbid_id, len(self.all))
